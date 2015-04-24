@@ -1,0 +1,130 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>Getting Started Extension's Popup</title>
+    <style>
+      body {
+        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+        font-size: 100%;
+        width: 500px;
+        height: 100%;
+        font-size: 12px;
+      }
+
+      a:focus,
+      a:visited,
+      a:active {
+        border: none;
+        outline: none;
+      }
+      #header {
+        position: relative;
+      }
+      #signin {
+        white-space: pre;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 400px;
+        width: 200px;
+      }
+      #logo {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      #sign-in {
+        text-align: center;
+        margin: 10px 0 30px 0;
+      }
+      #sign-in a {
+        font-size: 20px;
+        color: #15c;
+        /*text-decoration: none;*/
+      }
+      #alarms a {
+        cursor: pointer;
+        color: blue;
+        text-decoration: underline;
+      }
+      #bookmarks a {
+        display: inline-block;
+      }
+      #bookmarks span {
+        cursor: pointer;
+        text-decoration: underline;
+        display: block;
+      }
+      #bookmarks .list-bookmarks-sub {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: red;
+        z-index: 9;
+        width: 300px;
+      }
+      #bookmarks span:hover + .list-bookmarks-sub {
+        display: block;
+      }
+      #bookmarks ul ul {
+        position: relative;
+      }
+    </style>
+    
+  </head>
+  <body id="body">
+    <div id="header">
+      <img id="logo" src="icon_32.png">
+      <span>Checker Plus for Gmail</span>
+      <!-- <a href="#" id="close" onclick="closePopup()">X</a> -->
+    </div>
+    <div id="container">
+      <div id="sign-in">
+        <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">Sign in</a>
+      </div>
+      <div id="alarms">
+        <h1>Alarm</h1>
+        <a id="alarmOn">On</a>
+        <a id="alarmOff">Off</a>
+        <a id="alarmGet">Get</a>
+      </div>
+      <div id="bookmarks">
+        <h1>Bookmarks</h1>
+      </div>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script src="popup.js"></script>
+    <script src="eventPage.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,153 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>Getting Started Extension's Popup</title>
+    <style>
+      body {
+        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+        font-size: 100%;
+        width: 500px;
+        height: 100%;
+        font-size: 12px;
+      }
+
+      a:focus,
+      a:visited,
+      a:active {
+        border: none;
+        outline: none;
+      }
+      ul,li {
+        list-style: none;
+      }
+      #header {
+        position: relative;
+      }
+      #signin {
+        white-space: pre;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 400px;
+        width: 200px;
+      }
+      #logo {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      #sign-in {
+        text-align: center;
+        margin: 10px 0 30px 0;
+      }
+      #sign-in a {
+        font-size: 20px;
+        color: #15c;
+        /*text-decoration: none;*/
+      }
+      #alarms a,
+      .btn-cancel {
+        cursor: pointer;
+        color: blue;
+        text-decoration: underline;
+      }
+      #bookmarks {
+        position: relative;
+      }
+      #bookmarks a {
+        display: inline-block;
+      }
+      #bookmarks span {
+        cursor: pointer;
+        text-decoration: underline;
+        display: block;
+      }
+      #bookmarks ul ul {
+        margin-left: -40px;
+      }
+      #bookmarks ul ul span {
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+      #bookmarks ul ul .list-bookmarks-sub {
+        margin-left: 40px;
+      }
+      #bookmarks li i {
+        text-decoration: underline;
+        padding-left: 5px;
+        cursor: pointer;
+      }
+      .addBookMarkBox {
+        border: 1px solid;
+        padding: 10px 5px;
+        border-radius: 5px;
+        display: none;
+        position: absolute;
+        top: -30px;
+        right: 70px;
+        background: white;
+      }
+      .addBookMarkBox input {
+        display: block;
+      }
+      .addBookMarkBox button {
+        margin-top: 5px;
+        margin-right: 10px;
+      }
+    </style>
+    
+  </head>
+  <body id="body">
+    <div id="container">
+      <div id="translate">
+        <h1>Google Translate</h1>
+        <span>Enter Words:</span><input type="tetx" id="valueWord">
+        <span>From:</span>
+        <select id="from">
+          <option value="auto">Auto</option>
+          <option value="en">English</option>
+          <option value="vi">Vietnamese</option>
+        </select>
+        <span>To:</span>
+        <select id="to">
+          <option value="vi">Vietnamese</option>
+          <option value="en">English</option>
+        </select>
+        <button id="btn-translate">Translate</button>
+      </div>
+      <div id="googleTranslate"></div>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script src="translate.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

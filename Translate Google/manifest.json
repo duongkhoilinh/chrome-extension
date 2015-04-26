@@ -1,0 +1,16 @@
+{
+	"manifest_version" : 2, 
+	"name" : "Google Translate",
+	"description" : "",
+	"version" : "0.1",
+
+	"browser_action" : {
+		"default_icon" : "translate.png",
+		"default_title" : "Google Translate",
+		"default_popup" : "translate.html"
+	},
+	"background" : {
+		"scripts" : ["translate.js"]
+	}, 
+	"permissions" : ["tabs","http://*/*", "https://*/*"]
+}

@@ -58,23 +58,24 @@ $(document).ready(function(){
 // Alarm
 function createAlarm() {
 	chrome.alarms.create("myAlarm", {delayInMinutes: 0.1, periodInMinutes: 0.1});
-	// window.close();
+	window.close();
 	console.log('on')
 }
 function clearAlarm() {
 	chrome.alarms.clear("myAlarm");
-	// window.close();
+	window.close();
 	console.log('off')
 }
 function getAlarm() {
 	chrome.alarms.get("myAlarm",function(alarm){
 		chrome.alarms.create("myAlarm", {delayInMinutes: 1, periodInMinutes: 1});
-		// window.close();
+		window.close();
 	})
 }
 function setup() {
 	$("#alarmOn").click(function() {
 		createAlarm();
+		console('abc')
 	})
 	$("#alarmOff").click(function() {
 		clearAlarm();

@@ -10,7 +10,7 @@
 		"default_popup" : "translate.html"
 	},
 	"background" : {
-		"scripts" : ["translate.js"]
+		"scripts" : ["jquery.min.js","translate.js"]
 	}, 
-	"permissions" : ["tabs","http://*/*", "https://*/*"]
+	"permissions" : ["tabs","identity","http://*/*", "https://*/*"]
 }

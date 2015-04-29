@@ -20,6 +20,6 @@ $(document).ready(function() {
 		var to = $('#to').val();
 		var url = 'https://translate.google.com/#'+from+'/'+to+'/'+valTranslate
 		console.log(url);
-		chrome.tabs.create({url});
-	})
-})
+		chrome.tabs.create({'url':url});
+	});
+});

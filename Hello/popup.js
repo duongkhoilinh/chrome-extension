@@ -15,6 +15,7 @@ $(document).ready(function(){
 	// Bookmarks
 	dumpBookmarks();
 	searchBookMark();
+	// getToken();
 	$('#addBookMark').click(function() {
 		$('.addBookMarkBox').show();
 		$('#saveBookMark').show();
@@ -36,7 +37,7 @@ $(document).ready(function(){
 		var url = $('#urlBookMark').val();
 		idInt = id.substr(4,2);
 		console.log(idInt,title,url);
-		chrome.bookmarks.update(idInt, {title,url}, function() {
+		chrome.bookmarks.update(idInt, {'title':title,'url':url}, function() {
 			$('#bookmarks > ul').empty();
 		});
 	})
@@ -168,10 +169,11 @@ function createBookMark() {
 	var title = $('#titleBookMark').val();
 	var url = $('#urlBookMark').val();
 	console.log(parentId,index,title,url);
-	chrome.bookmarks.create({parentId,index,title,url}, function() {
+	chrome.bookmarks.create({'parentId':parentId,'index':index,'title':title,'url':url}, function() {
 		$('#bookmarks > ul').empty();
 	});
 }
+
 
 
 

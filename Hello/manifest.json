@@ -4,6 +4,12 @@
   "name": "Getting started example",
   "description": "This extension shows a Google Image search result for the current page",
   "version": "1.0",
+  "oauth2": {
+    "client_id": "698043352843-18jcmrbpcneee05f0qdv2c34s7iirvs4.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/drive"
+    ]
+  },
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html",
@@ -13,5 +19,5 @@
     "scripts":["eventPage.js"],
     "persistent":false
   },
-  "permissions": ["alarms","bookmarks","tabs"]
+  "permissions": ["alarms","bookmarks","tabs","identity"]
 }

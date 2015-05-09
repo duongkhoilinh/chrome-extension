@@ -1,5 +1,5 @@
 chrome.alarms.onAlarm.addListener(function(alarm) {
-  alert("Hello World!",alarm);
+  alert("Hello World!");
 });
 chrome.bookmarks.onRemoved.addListener(function() {
 	// alert('Delete a bookmarks!')

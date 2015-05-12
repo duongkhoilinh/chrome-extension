@@ -1,0 +1,22 @@
+body {
+	width: 500px;
+	height: 300px;
+	font-size: 14px;
+}
+i {
+	cursor: pointer;
+}
+.header-left {
+	font-size: 18px;
+	font-weight: bold;
+	display: inline-block;
+	width: 54%;
+}
+.header-right {
+	display: inline-block;
+	width: 45%;
+	text-align: right;
+}
+.header-right i {
+	margin-left: 12px;
+}

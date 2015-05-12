@@ -4,12 +4,12 @@
     "page": "background.html"
   },
   "browser_action": {
-    "default_icon": "gmail_not_logged_in.png",
+    "default_icon": "images/gmail_not_logged_in.png",
     "default_popup": "index.html"
   },
   "description": "__MSG_gmailcheck_description__",
   "icons": {
-    "128": "icon_128.png"
+    "128": "images/icon_128.png"
   },
   "name": "__MSG_gmailcheck_name__",
   "permissions": [

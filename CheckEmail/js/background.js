@@ -16,11 +16,11 @@ $(document).ready(function() {
       url: "https://mail.google.com/mail/feed/atom",
       dataType: "xml"
     }).done(function(data) {
-      $('#logged_in').attr('src','gmail_logged_in.png');
+      $('#logged_in').attr('src','images/gmail_logged_in.png');
       result = $(data).find('fullcount').text();
       setIcon(result);
     }).fail(function() {
-      $('#logged_in').attr('src','gmail_not_logged_in.png');
+      $('#logged_in').attr('src','images/gmail_not_logged_in.png');
       result="";
       setIcon(result);
     })

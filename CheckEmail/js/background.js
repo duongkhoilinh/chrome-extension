@@ -35,13 +35,13 @@ $(document).ready(function() {
     canvasContext.clearRect(0, 0, canvas.width, canvas.height);
         canvasContext.drawImage(loggedInImage,0, 0);
     canvasContext.fillStyle = "red";
-    canvasContext.fillText(fullcount,6,19);
+    canvasContext.fillText(fullcount,8,19);
     chrome.browserAction.setIcon({imageData:canvasContext.getImageData(0, 0, canvas.width,canvas.height)
     });
   }
 
   function refresh() {
-    chrome.alarms.create('refresh', {periodInMinutes: 0.01});
+    chrome.alarms.create('refresh', {periodInMinutes: 1});
   }
 
 });

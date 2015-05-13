@@ -6,15 +6,16 @@ body {
 }
 i {
 	cursor: pointer;
+	opacity: 0.6;
 }
-ul, li {
-	list-style: none;
+i:hover {
+	opacity: 1;
 }
-p {
-	margin: 0 0 5px 0;
-}
-#header {
-	margin: 0px 0px 10px 2px;
+#alert {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 50%;
 }
 .header-left {
 	font-size: 18px;

@@ -18,7 +18,10 @@ $(document).ready(function() {
     }).done(function(data) {
       $('#logged_in').attr('src','images/gmail_logged_in.png');
       result = $(data).find('fullcount').text();
-      setIcon(result);
+      if(result!=0)
+        setIcon(result);
+      else 
+        $('#logged_in').attr('src','images/gmail_not_logged_in.png');
     }).fail(function() {
       $('#logged_in').attr('src','images/gmail_not_logged_in.png');
       result="";

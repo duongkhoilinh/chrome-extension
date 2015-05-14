@@ -41,7 +41,7 @@ $(document).ready(function() {
   }
 
   function refresh() {
-    chrome.alarms.create('refresh', {periodInMinutes: 1});
+    chrome.alarms.create('refresh', {periodInMinutes: 0.01});
   }
 
 });

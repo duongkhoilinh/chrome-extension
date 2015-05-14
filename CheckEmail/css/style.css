@@ -11,11 +11,17 @@ i {
 i:hover {
 	opacity: 1;
 }
+p {
+	margin: 5px 0;
+}
 #alert {
 	display: none;
 	position: absolute;
 	top: 0;
 	left: 50%;
+}
+#header {
+	margin-bottom: 10px;
 }
 .header-left {
 	font-size: 18px;
@@ -33,7 +39,7 @@ i:hover {
 }
 #inbox {
   border: 1px solid #ccc;
-  margin: 0 2px;
+  /* margin: 0 2px; */
   text-align: center;
   font-size: 11px;
   cursor: pointer;
@@ -43,7 +49,7 @@ i:hover {
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#fafafa));
 }
 #listMail ul {
-	padding: 0 2px;
+	padding: 0;
 	margin: 0;
 }
 #listMail li {
@@ -64,3 +70,22 @@ i:hover {
 	color: #15c;
 	display: block;
 }
+#informationPersonal {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#f3f3f3));
+	border: 1px solid #cccccc;
+	border-bottom: none;
+	padding: 8px 10px;
+}
+#informationPersonal:hover {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#fafafa));
+	cursor: pointer;
+}
+.myEmailName {
+	margin: 0;
+	font-weight: bold;
+}
+
+
+
+
+

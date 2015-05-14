@@ -1,21 +1,27 @@
 $(document).ready(function() {	
+    var url_gmail = isGmail();
     $.ajax({
       url: "https://mail.google.com/mail/feed/atom",
       dataType: "xml"
     }).done(function(data) {
+
         getInfoEmails(data);
+
+        getInfoPersonal(data);
 
         $('#listMail li').click(function() {
           var url = $(this).data('url');
+          console.log(url);
           createTabs(url);
-        })
+        });
+
     }).fail(function() {
       $('#inbox').hide();
+      $('#informationPersonal').hide();
       var signin = "<a id='btn-signin' href=''>Signin</a>";
       $('#listMail').html(signin);
       $('#btn-signin').click(function() {
-        var url = "https://mail.google.com/mail/u/0/#inbox";
-        createTabs(url);
+        createTabs(url_gmail);
       });
     });
 
@@ -23,25 +29,9 @@ $(document).ready(function() {
       closePopup();
     })
 
-    $('.btn-open-gmail').click(function() {
-      chrome.tabs.create({url:"https://mail.google.com/mail/u/0/#inbox"});
-    })
+    reloadGmail();
 
-    $('.btn-reload').click(function() {
-      $.ajax({
-        url: "https://mail.google.com/mail/feed/atom",
-        dataType: "xml",
-        beforeSend: function(hr) {
-          $('#alert').show();
-        }
-      }).done(function() {
-        $('#alert').hide();
-        getInfoPersonal(data);
-        getInfoEmails(data);
-      });
-    });
-
-
+    console.log($('.btn-close'));
 });
 
 function isGmail() {
@@ -54,8 +44,6 @@ function getInfoPersonal(data) {
   var emailName = title.substr(18);
   $('.myEmailName').html(emailName + '(' + fullcount + ')');
   $('.myEmailName').click(function() {
-    // var url = isGmail();
-    // chrome.tabs.create({url:url});
     chrome.tabs.query({}, function(tabs) {
       console.log(tabs[5]);
       for(var i = 0; i < tabs.length; i++) {
@@ -65,26 +53,6 @@ function getInfoPersonal(data) {
       }
     })
   })
-}
-
-function getInfoEmails(data) {
-  var entries = $(data).find('entry');
-  entries.each(function() {
-      var Title = $(this).find('title').text();
-      var Summary = $(this).find('summary').text();
-      var Links = $(this).find('link').text();
-      var Modified = $(this).find('modified').text();
-      var Issued = $(this).find('issued').text();
-      var Id = $(this).find('id').text();
-  });
-}
-
-function createTab(url) {
-
-}
-
-function closePopup() {
-  window.close()
 }
 
 function getInfoEmails(data) {
@@ -108,18 +76,38 @@ function getInfoEmails(data) {
   $('#listMail').html(ul);
 }
 
-function createTabs(url) {
-  chrome.tabs.create({url:url});
+function reloadGmail() {
+  $('.btn-reload').click(function() {
+    $.ajax({
+      url: "https://mail.google.com/mail/feed/atom",
+      dataType: "xml",
+      beforeSend: function(hr) {
+        $('#alert').show();
+      }
+    }).done(function() {
+      $('#alert').hide();
+      getInfoPersonal(data);
+      getInfoEmails(data);
+    });
+  });
 }
 
-// function getUrlEmail(data,id) {
-//   var entries = $(data).find('entry');
-//   var url;
-//   $(entries).each(function(email) {
-//     var current_id = $(this).find('id').text();
-//     if(current_id == id) {
-//       url = $(this).find('title').text();
-//     }
-//     return url;
-//   })
-// }
+function createTabs(currentUrl) {
+  var check = 0;
+  chrome.tabs.query({}, function(tabs) {
+    for(var i = 0; i < tabs.length; i ++) {
+      var string = tabs[i].url;
+      if(string.substr(0,28) == currentUrl.substr(0,28)) {
+        chrome.tabs.update(tabs[i].id, {selected:true, url:currentUrl});
+      }
+      check ++;
+    }
+    if(check == tabs.length) {
+      chrome.tabs.create({url:currentUrl});
+    }
+  });
+}
+
+function closePopup() {
+  window.close()
+}

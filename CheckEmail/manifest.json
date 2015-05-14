@@ -7,11 +7,11 @@
     "default_icon": "images/gmail_not_logged_in.png",
     "default_popup": "index.html"
   },
-  "description": "__MSG_gmailcheck_description__",
+  "description": "Check eMail Google",
   "icons": {
     "128": "images/icon_128.png"
   },
-  "name": "__MSG_gmailcheck_name__",
+  "name": "Check eMail Google",
   "permissions": [
     "alarms",
     "tabs",

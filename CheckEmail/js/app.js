@@ -31,7 +31,9 @@ $(document).ready(function() {
 
     reloadGmail();
 
-    console.log($('.btn-close'));
+    $('.btn-open-gmail').click(function() {
+      createTabs(isGmail());
+    })
 });
 
 function isGmail() {
@@ -84,7 +86,7 @@ function reloadGmail() {
       beforeSend: function(hr) {
         $('#alert').show();
       }
-    }).done(function() {
+    }).done(function(data) {
       $('#alert').hide();
       getInfoPersonal(data);
       getInfoEmails(data);
@@ -97,7 +99,7 @@ function createTabs(currentUrl) {
   chrome.tabs.query({}, function(tabs) {
     for(var i = 0; i < tabs.length; i ++) {
       var string = tabs[i].url;
-      if(string.substr(0,28) == currentUrl.substr(0,28)) {
+      if(string == currentUrl) {
         chrome.tabs.update(tabs[i].id, {selected:true, url:currentUrl});
       }
       check ++;
@@ -105,6 +107,7 @@ function createTabs(currentUrl) {
     if(check == tabs.length) {
       chrome.tabs.create({url:currentUrl});
     }
+    console.log(tabs.length,check);
   });
 }
 

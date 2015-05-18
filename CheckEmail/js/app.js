@@ -37,9 +37,10 @@ $(document).ready(function() {
       createTabs(isGmail());
     })
 
-    // $('.btn-page-link').click(function() {
-    //   createNotications();
-    // })
+    $('.btn-page-link').click(function() {
+      var url = "https://mail.google.com/mail/u/0/?ui=2&view=btop&ver=dqujp3h61mgd";
+      createWindows(url, 'popup');
+    })
 });
 
 function isGmail() {
@@ -118,6 +119,10 @@ function createTabs(currentUrl) {
     }
     console.log(tabs.length,check);
   });
+}
+
+function createWindows(url,type) {
+  chrome.windows.create({url:url,type:type,width:300,height:300});
 }
 
 function closePopup() {

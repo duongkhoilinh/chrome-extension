@@ -1,6 +1,7 @@
 $(document).ready(function() {
   var result;
   var current_fullcount = 0;
+  var check;
   var canvas = document.getElementById("canvas");
   var loggedInImage = document.getElementById('logged_in');
   var canvasContext = canvas.getContext("2d");
@@ -17,9 +18,6 @@ $(document).ready(function() {
       url: "https://mail.google.com/mail/feed/atom",
       dataType: "xml"
     }).done(function(data) {
-      var dataNewEmail = { title: "Call", 
-                  iconUrl: "../images/icon_128.png"};
-
       $('#logged_in').attr('src','images/gmail_logged_in.png');
       result = $(data).find('fullcount').text();
       if(result!=0) {
@@ -34,7 +32,6 @@ $(document).ready(function() {
       else 
         $('#logged_in').attr('src','images/gmail_not_logged_in.png');
       current_fullcount = result;
-      console.log(result, current_fullcount);
     }).fail(function() {
       $('#logged_in').attr('src','images/gmail_not_logged_in.png');
       result="";

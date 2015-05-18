@@ -16,6 +16,7 @@
     "alarms",
     "tabs",
     "webNavigation",
+    "notifications",
     "*://*.google.com/"
    ],
   "version": "4.4.0",

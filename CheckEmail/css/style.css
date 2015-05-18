@@ -83,8 +83,12 @@ p {
 .myEmailName {
 	margin: 0;
 	font-weight: bold;
+	display: inline-block;
 }
-
+.btn-page-link {
+	display: inline-block;
+    float: right;
+}
 
 
 

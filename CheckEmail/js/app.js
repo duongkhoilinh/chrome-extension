@@ -1,28 +1,30 @@
 $(document).ready(function() {	
     var url_gmail = isGmail();
     $.ajax({
-      url: "https://mail.google.com/mail/feed/atom",
-      dataType: "xml"
-    }).done(function(data) {
+        url: "https://mail.google.com/mail/feed/atom",
+        dataType: "xml"
+      }).done(function(data) {
 
-        getInfoEmails(data);
+          getInfoEmails(data);
 
-        getInfoPersonal(data);
+          getInfoPersonal(data);
 
-        $('#listMail li').click(function() {
-          var url = $(this).data('url');
-          console.log(url);
-          createTabs(url);
+          $('#listMail li').click(function() {
+            var url = $(this).data('url');
+            console.log(url);
+            createTabs(url);
+          });
+
+          console.log(data);
+
+      }).fail(function() {
+        $('#inbox').hide();
+        $('#informationPersonal').hide();
+        var signin = "<a id='btn-signin' href=''>Signin</a>";
+        $('#listMail').html(signin);
+        $('#btn-signin').click(function() {
+          createTabs(url_gmail);
         });
-
-    }).fail(function() {
-      $('#inbox').hide();
-      $('#informationPersonal').hide();
-      var signin = "<a id='btn-signin' href=''>Signin</a>";
-      $('#listMail').html(signin);
-      $('#btn-signin').click(function() {
-        createTabs(url_gmail);
-      });
     });
 
     $('.btn-close').click(function() {
@@ -34,6 +36,10 @@ $(document).ready(function() {
     $('.btn-open-gmail').click(function() {
       createTabs(isGmail());
     })
+
+    // $('.btn-page-link').click(function() {
+    //   createNotications();
+    // })
 });
 
 function isGmail() {
@@ -58,9 +64,11 @@ function getInfoPersonal(data) {
 }
 
 function getInfoEmails(data) {
+  var checkNewEmail = '<check>True</check>';
   var entries = $(data).find('entry');
   var ul = "<ul>";
   $(entries).each(function(email) {
+    $(this).append(checkNewEmail);
     var iId = $(this).find('id').text();
     var iNameAuthor = $(this).find('author name').text();
     var iTitle = $(this).find('title').text();
@@ -68,6 +76,7 @@ function getInfoEmails(data) {
     var iDate = $(this).find('modified').text();
     var iEmailAuthor = $(this).find('author email').text();
     var iLink = $(this).find('link').attr('href');
+    // createNotications(iId,'You have a new email!',iTitle);
     ul += "<li data-url='" + iLink + "'>"+
               "<p class='name-author'>" + iNameAuthor + "</p>" +
               "<p class='title'>" + iTitle + "</p>" +

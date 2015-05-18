@@ -1,5 +1,6 @@
 $(document).ready(function() {
   var result;
+  var current_fullcount = 0;
   var canvas = document.getElementById("canvas");
   var loggedInImage = document.getElementById('logged_in');
   var canvasContext = canvas.getContext("2d");
@@ -16,12 +17,24 @@ $(document).ready(function() {
       url: "https://mail.google.com/mail/feed/atom",
       dataType: "xml"
     }).done(function(data) {
+      var dataNewEmail = { title: "Call", 
+                  iconUrl: "../images/icon_128.png"};
+
       $('#logged_in').attr('src','images/gmail_logged_in.png');
       result = $(data).find('fullcount').text();
-      if(result!=0)
+      if(result!=0) {
         setIcon(result);
+        if(result > current_fullcount) {
+          createNotications('You have ' + result + ' unread emails','');
+        }
+        if(result < current_fullcount) {
+          createNotications('You still ' + result + ' unread emails','');
+        }
+      }
       else 
         $('#logged_in').attr('src','images/gmail_not_logged_in.png');
+      current_fullcount = result;
+      console.log(result, current_fullcount);
     }).fail(function() {
       $('#logged_in').attr('src','images/gmail_not_logged_in.png');
       result="";
@@ -44,5 +57,21 @@ $(document).ready(function() {
     chrome.alarms.create('refresh', {periodInMinutes: 0.01});
   }
 
+  function createNotications(title,message) {
+    var opt = {
+      type: "basic",
+      title: title,
+      message: message,
+      priority: 25,
+      iconUrl:'../images/icon_128.png'
+    }
+    var id = '1';
+    chrome.notifications.create(id,opt, function() {
+      console.log('adasdas');
+      setTimeout(function() {
+        chrome.notifications.clear(id);
+      },5000)
+    });
+  }
 });
 

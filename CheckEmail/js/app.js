@@ -36,11 +36,6 @@ $(document).ready(function() {
     $('.btn-open-gmail').click(function() {
       createTabs(isGmail());
     })
-
-    $('.btn-page-link').click(function() {
-      var url = "https://mail.google.com/mail/u/0/?ui=2&view=btop&ver=dqujp3h61mgd";
-      createWindows(url, 'popup');
-    })
 });
 
 function isGmail() {
@@ -77,7 +72,6 @@ function getInfoEmails(data) {
     var iDate = $(this).find('modified').text();
     var iEmailAuthor = $(this).find('author email').text();
     var iLink = $(this).find('link').attr('href');
-    // createNotications(iId,'You have a new email!',iTitle);
     ul += "<li data-url='" + iLink + "'>"+
               "<p class='name-author'>" + iNameAuthor + "</p>" +
               "<p class='title'>" + iTitle + "</p>" +

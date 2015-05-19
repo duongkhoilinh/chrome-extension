@@ -1,7 +1,6 @@
 $(document).ready(function() {
   var result;
-  var current_fullcount = 0;
-  var check;
+  var currentFullCount = -1;
   var canvas = document.getElementById("canvas");
   var loggedInImage = document.getElementById('logged_in');
   var canvasContext = canvas.getContext("2d");
@@ -13,6 +12,10 @@ $(document).ready(function() {
     getData();
   });
 
+  chrome.notifications.onClicked.addListener(function() {
+    chrome.tabs.create({url:"https://mail.google.com/"});
+  });
+
   function getData() {
     $.ajax({
       url: "https://mail.google.com/mail/feed/atom",
@@ -20,23 +23,29 @@ $(document).ready(function() {
     }).done(function(data) {
       $('#logged_in').attr('src','images/gmail_logged_in.png');
       result = $(data).find('fullcount').text();
-      if(result!=0) {
+      if (result != 0) {
         setIcon(result);
-        if(result > current_fullcount) {
+        if (currentFullCount == -1) {
           createNotications('You have ' + result + ' unread emails','');
+          currentFullCount = result;
+        } else {
+          if (result > currentFullCount) {
+            var iNameAuthor = $(data).find('entry author name')[0].text();
+            var iTitle = $(data).find('entry title')[0].text();
+            createNotications('You 1 new email', iTitle);
+          } else if (result < currentFullCount) {
+            createNotications('You still ' + result + ' unread emails','');
+          }
+          currentFullCount = result;    
         }
-        if(result < current_fullcount) {
-          createNotications('You still ' + result + ' unread emails','');
-        }
-      }
-      else 
+      } else { 
         $('#logged_in').attr('src','images/gmail_not_logged_in.png');
-      current_fullcount = result;
+      }
     }).fail(function() {
       $('#logged_in').attr('src','images/gmail_not_logged_in.png');
       result="";
       setIcon(result);
-    })
+    });
   }
 
   function setIcon(fullcount) {
@@ -59,15 +68,18 @@ $(document).ready(function() {
       type: "basic",
       title: title,
       message: message,
-      priority: 25,
+      priority: 2,
       iconUrl:'../images/icon_128.png'
     }
+    var random = Math.floor((Math.random() * 1000) + 1);
+    // var id = random.toString();
     var id = '1';
-    chrome.notifications.create(id,opt, function() {
-      console.log('adasdas');
+    chrome.notifications.create(id, opt, function(id) {
+      // alert(id);
+      // chrome.notifications.clear(id);
       setTimeout(function() {
-        chrome.notifications.clear(id);
-      },5000)
+        // chrome.notifications.clear(id);
+      },1000)
     });
   }
 });

@@ -60,9 +60,15 @@ p {
 }
 #listMail li .name-author {
 	font-weight: bold;
+	display: inline-block;
 }
 #listMail li .summary {
 	color: #A1A1A1;
+}
+#listMail li .date {
+	display: inline-block;
+  vertical-align: top;
+  float: right;
 }
 #btn-signin {
 	text-align: center;

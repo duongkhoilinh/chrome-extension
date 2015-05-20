@@ -76,8 +76,10 @@ function getInfoEmails(data) {
     var iDate = $(this).find('modified').text();
     var iEmailAuthor = $(this).find('author email').text();
     var iLink = $(this).find('link').attr('href');
+    var iDate = moment($(this).find('modified').text()).format('LLL');
     ul += "<li data-url='" + iLink + "'>"+
               "<p class='name-author'>" + iNameAuthor + "</p>" +
+              "<p class='date'>" + iDate + "</p>" +
               "<p class='title'>" + iTitle + "</p>" +
               "<p class='summary'>" + iSummary + "</p>" +
           "</li>";

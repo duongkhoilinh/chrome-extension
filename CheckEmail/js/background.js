@@ -30,9 +30,10 @@ $(document).ready(function() {
           currentFullCount = result;
         } else {
           if (result > currentFullCount) {
-            var iNameAuthor = $(data).find('entry author name')[0].text();
-            var iTitle = $(data).find('entry title')[0].text();
-            createNotications('You 1 new email', iTitle);
+            // var iNameAuthor = $(data).find('entry author name')[0].text();
+            // var iTitle = $(data).find('entry title')[0].text();
+            createNotications('You 1 new email', '');
+            document.getElementById('alarmNewEmail').play();
           } else if (result < currentFullCount) {
             createNotications('You still ' + result + ' unread emails','');
           }

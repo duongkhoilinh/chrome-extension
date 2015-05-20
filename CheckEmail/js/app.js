@@ -36,6 +36,10 @@ $(document).ready(function() {
     $('.btn-open-gmail').click(function() {
       createTabs(isGmail());
     })
+
+    // $('#play').click(function() {
+    //   document.getElementById('alarmNewEmail').play();
+    // })
 });
 
 function isGmail() {

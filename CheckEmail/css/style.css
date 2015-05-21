@@ -1,7 +1,7 @@
 body {
 	width: 650px;
-/*	height: 300px;
-*/	font-size: 14px;
+	height: 0;
+	font-size: 14px;
 	margin: 8px 2px;
 }
 i {
@@ -13,6 +13,9 @@ i:hover {
 }
 p {
 	margin: 5px 0;
+}
+.right {
+	float: right;
 }
 #alert {
 	display: none;
@@ -53,8 +56,9 @@ p {
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#fafafa));
 }
 #listMail {
-	overflow-x: scroll;
+	overflow-x: hidden;
   	height: 500px;
+	overflow-y: scroll;
 }
 #listMail ul {
 	padding: 0;
@@ -103,7 +107,14 @@ p {
 	display: inline-block;
     float: right;
 }
-
-
-
-
+#btn-search {
+	display: none;
+}
+#btn-search a {
+  border: 1px solid #ccc;
+  padding: 0px 5px 3px 5px;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 12px;
+  font-weight: bold;
+}

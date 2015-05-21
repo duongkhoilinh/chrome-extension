@@ -2,8 +2,13 @@ $(document).ready(function() {
     var url_gmail = isGmail();
     $.ajax({
         url: "https://mail.google.com/mail/feed/atom",
-        dataType: "xml"
+        dataType: "xml",
+        beforeSend: function() {
+          $('#listMail').hide();
+        }
       }).done(function(data) {
+
+          $('#listMail').show();
 
           getInfoEmails(data);
 
@@ -41,13 +46,29 @@ $(document).ready(function() {
       createTabs(isGmail());
     })
 
+    $('.btn-search').click(function() {
+      $('#btn-search').show();
+      $(this).hide();
+    })
+
+    $('#btn-cancel').click(function() {
+      $('#btn-search').hide();
+      $('.btn-search').show();
+    })
+
+    $('#btn-submit').click(function() {
+      var nameSearch = $('#btn-search input').val();
+      var url = isGmail()+'#search/'+nameSearch;
+      createTabs(url);
+    })
+
     // $('#play').click(function() {
     //   document.getElementById('alarmNewEmail').play();
     // })
 });
 
 function isGmail() {
-  return "https://mail.google.com/mail/u/0/#inbox";
+  return "https://mail.google.com/mail/u/0/";
 }
 
 function getInfoPersonal(data) {

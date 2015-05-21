@@ -30,9 +30,11 @@ $(document).ready(function() {
           currentFullCount = result;
         } else {
           if (result > currentFullCount) {
-            // var iNameAuthor = $(data).find('entry author name')[0].text();
-            // var iTitle = $(data).find('entry title')[0].text();
-            createNotications('You 1 new email', '');
+            console.log(data);
+            var iAuthor = $(data).find('entry:nth-child(6) author name').text();
+            var iTitle = $(data).find('entry:nth-child(6) title').text();
+            var iSummary = $(data).find('entry:nth-child(6) summary').text();
+            createNotications(iAuthor + '-' + iTitle, iSummary);
             document.getElementById('alarmNewEmail').play();
           } else if (result < currentFullCount) {
             createNotications('You still ' + result + ' unread emails','');

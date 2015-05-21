@@ -16,9 +16,13 @@ p {
 }
 #alert {
 	display: none;
-	position: absolute;
-	top: 0;
-	left: 50%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  background: rgb(253, 246, 207);
+  padding: 2px 5px;
+  border-radius: 1px;
+  margin-top: 2px;
 }
 #header {
 	margin-bottom: 10px;
@@ -47,6 +51,10 @@ p {
 }
 #inbox:hover {
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#fafafa));
+}
+#listMail {
+	overflow-x: scroll;
+  	height: 500px;
 }
 #listMail ul {
 	padding: 0;

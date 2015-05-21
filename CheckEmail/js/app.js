@@ -37,6 +37,10 @@ $(document).ready(function() {
       createTabs(isGmail());
     })
 
+    $('#inbox').click(function() {
+      createTabs(isGmail());
+    })
+
     // $('#play').click(function() {
     //   document.getElementById('alarmNewEmail').play();
     // })

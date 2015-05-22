@@ -41,9 +41,6 @@ $(document).ready(function() {
       createTabs(isGmail());
     })
 
-    // $('#play').click(function() {
-    //   document.getElementById('alarmNewEmail').play();
-    // })
 });
 
 function isGmail() {

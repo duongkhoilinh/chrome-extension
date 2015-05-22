@@ -59,6 +59,7 @@ p {
 	overflow-x: hidden;
   	height: 500px;
 	overflow-y: scroll;
+	border-bottom: 1px solid #ccc;
 }
 #listMail ul {
 	padding: 0;
@@ -69,6 +70,9 @@ p {
 	border-top: none;
 	padding: 5px 10px;
 	cursor: pointer;
+}
+#listMail li:last-child {
+  border-bottom: none;
 }
 #listMail li .name-author {
 	font-weight: bold;

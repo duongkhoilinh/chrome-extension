@@ -26,18 +26,20 @@ $(document).ready(function() {
       if (result != 0) {
         setIcon(result);
         if (currentFullCount == -1) {
-          createNotications('You have ' + result + ' unread emails','');
+          createNotications('','You have ' + result + ' unread emails');
+          chrome.tts.speak('You have ' + result + ' unread emails');
           currentFullCount = result;
         } else {
           if (result > currentFullCount) {
-            console.log(data);
-            var iAuthor = $(data).find('entry:nth-child(6) author name').text();
+            var iNameAuthor = $(data).find('entry:nth-child(6) author name').text();
             var iTitle = $(data).find('entry:nth-child(6) title').text();
             var iSummary = $(data).find('entry:nth-child(6) summary').text();
-            createNotications(iAuthor + '-' + iTitle, iSummary);
-            document.getElementById('alarmNewEmail').play();
+            createNotications(iNameAuthor + ' - ' + iTitle, iSummary);
+            chrome.tts.speak('You have a new email from' + iNameAuthor);
+            chrome.tts.speak('Please, click on notification to read it.', {'enqueue': true});
           } else if (result < currentFullCount) {
-            createNotications('You still ' + result + ' unread emails','');
+            createNotications('','You still ' + result + ' unread emails');
+            chrome.tts.speak('You still ' + result + ' unread emails');
           }
           currentFullCount = result;    
         }
@@ -71,18 +73,15 @@ $(document).ready(function() {
       type: "basic",
       title: title,
       message: message,
-      priority: 2,
+      priority: 1,
       iconUrl:'../images/icon_128.png'
     }
     var random = Math.floor((Math.random() * 1000) + 1);
-    // var id = random.toString();
-    var id = '1';
-    chrome.notifications.create(id, opt, function(id) {
-      // alert(id);
-      // chrome.notifications.clear(id);
+    var id = random.toString();
+    chrome.notifications.create(id, opt, function() {
       setTimeout(function() {
-        // chrome.notifications.clear(id);
-      },1000)
+        chrome.notifications.clear(id, function(){});
+      },10000)
     });
   }
 });

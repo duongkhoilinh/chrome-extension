@@ -62,9 +62,6 @@ $(document).ready(function() {
       createTabs(url);
     })
 
-    // $('#play').click(function() {
-    //   document.getElementById('alarmNewEmail').play();
-    // })
 });
 
 function isGmail() {

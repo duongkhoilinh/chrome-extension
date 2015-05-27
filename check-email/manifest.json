@@ -12,14 +12,20 @@
     "128": "images/icon_128.png"
   },
   "name": "Check eMail Google",
+  // "options_page": "option.html",
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  },
   "permissions": [
     "alarms",
     "tabs",
     "webNavigation",
     "notifications",
     "tts",
+    "storage",
     "*://*.google.com/"
    ],
-  "version": "4.4.0",
+  "version": "0.0.1",
   "manifest_version": 2
 }

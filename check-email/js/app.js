@@ -1,5 +1,6 @@
 $(document).ready(function() {	
     var url_gmail = isGmail();
+    var onOffSpeak = localStorage.onOffSpeak;
     $.ajax({
         url: "https://mail.google.com/mail/feed/atom",
         dataType: "xml",
@@ -20,12 +21,22 @@ $(document).ready(function() {
             createTabs(url);
           });
 
-          console.log(data);
+          var fullcount = $(data).find('fullcount').text();
+
+          if(fullcount <= 5) {
+            $('#listMail').css({'height':'auto'});
+          }
+          else {
+            $('#listMail').css({'height':'500px'});
+          }
 
       }).fail(function() {
         $('#inbox').hide();
         $('#informationPersonal').hide();
         var signin = "<a id='btn-signin' href=''>Signin</a>";
+        $('#listMail').show();
+        $('#listMail').css('height','50px');
+        $('#listMail').css('border','none');
         $('#listMail').html(signin);
         $('#btn-signin').click(function() {
           createTabs(url_gmail);
@@ -39,11 +50,11 @@ $(document).ready(function() {
     reloadGmail();
 
     $('.btn-open-gmail').click(function() {
-      createTabs(isGmail());
+      createTabs(url_gmail);
     })
 
     $('#inbox').click(function() {
-      createTabs(isGmail());
+      createTabs(url_gmail);
     })
 
     $('.btn-search').click(function() {
@@ -58,10 +69,29 @@ $(document).ready(function() {
 
     $('#btn-submit').click(function() {
       var nameSearch = $('#btn-search input').val();
-      var url = isGmail()+'#search/'+nameSearch;
-      createTabs(url);
+      var url = url_gmail + '#search/' + nameSearch;
+      if(nameSearch!="") {
+        createTabs(url);
+      }
     })
 
+    $('.btn-option').click(function() {
+      var url_option = "chrome://extensions/?options=plencmnoenokgmemjliblkammbbinocj";
+      createTabs(url_option);
+    })
+
+    if(onOffSpeak == 'on') {
+      $('.btn-volume-on').show();
+      $('.btn-volume-off').hide();
+    }
+    else {
+      $('.btn-volume-off').show();
+      $('.btn-volume-on').hide();
+    }
+
+
+
+    
 });
 
 function isGmail() {
@@ -77,12 +107,13 @@ function getInfoPersonal(data) {
     chrome.tabs.query({}, function(tabs) {
       console.log(tabs[5]);
       for(var i = 0; i < tabs.length; i++) {
-        if(tabs[i].url == isGmail) {
+        if(tabs[i].url == url_gmail) {
           chrome.tabs.update(tab[i].id, {active:"true"});
         }
       }
     })
-  })
+  });
+
 }
 
 function getInfoEmails(data) {

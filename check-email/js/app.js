@@ -1,5 +1,5 @@
 $(document).ready(function() {	
-    var url_gmail = isGmail();
+    var url_gmail = "https://mail.google.com/mail/u/0/";
     var onOffSpeak = localStorage.onOffSpeak;
     $.ajax({
         url: "https://mail.google.com/mail/feed/atom",
@@ -89,14 +89,7 @@ $(document).ready(function() {
       $('.btn-volume-on').hide();
     }
 
-
-
-    
 });
-
-function isGmail() {
-  return "https://mail.google.com/mail/u/0/";
-}
 
 function getInfoPersonal(data) {
   var fullcount = $(data).find('fullcount').text();

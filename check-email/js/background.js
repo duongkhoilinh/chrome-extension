@@ -18,6 +18,10 @@ $(document).ready(function() {
     chrome.tts.stop();
   });
 
+  chrome.notifications.onClosed.addListener(function() {
+    chrome.tts.stop();
+  });
+
   function getData() {
     $.ajax({
       url: "https://mail.google.com/mail/feed/atom",
@@ -31,7 +35,7 @@ $(document).ready(function() {
           createNotications('','You have ' + result + ' unread emails');
           currentFullCount = result;
           if(onOffSpeak == 'on')
-            chrome.tts.speak('You have ' + result + ' unread emails',{'rate': 0.1});
+            chrome.tts.speak('You have ' + result + ' unread emails',{'rate': 1});
         } else {
           if (result > currentFullCount) {
             var iNameAuthor = $(data).find('entry:nth-child(6) author name').text();
@@ -40,7 +44,7 @@ $(document).ready(function() {
             createNotications(iNameAuthor + ' - ' + iTitle, iSummary);
             if(onOffSpeak == 'on') {
               chrome.tts.speak('You have a new email from' + iNameAuthor);
-              chrome.tts.speak('Please, click on notification to read it.', {'enqueue': true});
+              // chrome.tts.speak('Please, click on notification to read it.', {'enqueue': true});
             }
           } else if (result < currentFullCount) {
             createNotications('','You still ' + result + ' unread emails');

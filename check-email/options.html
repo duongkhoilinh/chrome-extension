@@ -1,14 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head><title>Option Page</title></head>
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/options.css">
 <body>
 
-<span>Notification Speak:</span>
-<select id="control-speak">
-  <option value="on">On</option>
-  <option value="off">Off</option>
-</select>
+<div id="container">
+  <ul>
+    <li><a href="#notification">Notifications</a></li>
+    <li><a href="#about-us">About Us</a></li>
+  </ul>
+  <div id="notification">
+    <span>Speak:</span>
+	<select id="control-speak">
+	  <option value="on">On</option>
+	  <option value="off">Off</option>
+	</select>
+  </div>
+  <div id="about-us">
+    <ul>
+    	<li>
+    		<p>DSV TECHNOLOGY AND APPLICATION CORPORATION</p>
+    	</li>
+    	<li>
+    		<i class="fa fa-building-o fa-lg"></i>
+    		<p>57 Le Thi Hong Gam, Ward Nguyen Thai Binh, District 1, Ho Chi Minh City, Vietnam</p>
+    	</li>
+    	<li>
+    		<i class="fa fa-envelope-o fa-lg"></i>
+    		<a href="mailto:info@dgroup.com">info@dgroup.co</a>
+    	</li>
+    	<li>
+    		<i class="fa fa-phone fa-lg"></i>
+    		<p>(+84) 914 03 05 87</p>
+    	</li>
+    	<li>
+    		<i class="fa fa-globe fa-lg"></i>
+    		<a href="https://www.designveloper.com">www.designveloper.com</a>
+    	</li>
+        <li>
+            <i class="fa fa-facebook fa-lg"></i>
+            <a href="https://www.facebook.com/designveloper">FACEBOOK.COM/DESIGNVELOPER</a>
+        </li>
+    </ul>
+  </div>
+</div>
 <script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 <script src="js/options.js"></script>
 </body>
 </html>

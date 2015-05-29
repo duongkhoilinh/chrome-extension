@@ -1,0 +1,49 @@
+ul, li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+p {
+	margin: 0;
+	margin-left: 10px;
+}
+a:hover,
+a:focus,
+a:active {
+	outline: none;
+	border: none;
+}
+#container {
+	width: 700px;
+}
+#about-us li {
+	margin-bottom: 20px;
+}
+#about-us p {
+	display: inline-block;
+	width: 93%;
+	vertical-align: top;
+	margin-left: 0;
+	font-weight: bold;
+}
+#about-us i {
+	display: inline-block;
+	width: 4%;
+}
+#about-us a {
+	font-style: italic;
+  	color: blue;
+}
+#about-us li:nth-child(1) p {
+	font-size: 16px;
+	text-align: center;
+}
+#about-us li:nth-child(2) p {
+	margin-top: -2px;
+}
+#about-us li:nth-child(6) a {
+	font-style: inherit;
+	text-decoration: none;
+	font-weight: bold;
+	color: #000;
+}

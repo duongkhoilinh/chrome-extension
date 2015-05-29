@@ -1,14 +1,20 @@
 $(document).ready(function() {
-  // Saves options to chrome.storage
   var onOffSpeak = localStorage.onOffSpeak;
-  localStorage.onOffSpeak = 'on';
-  if(localStorage.length == 0) {
-  	$('#control-speak').val('on');
+  var checkStorage = localStorage.checkStorage;
+
+  checkStorage = '';
+
+  if(checkStorage.lenght < 0) {
+    $('#control-speak').val('on');
+    onOffSpeak = 'on';
   }
   else {
-  	$('#control-speak').val(onOffSpeak);
+    $('#control-speak').val(onOffSpeak);
   }
+
   $('#control-speak').change(function() {
     localStorage.onOffSpeak = $(this).val();
   })
+
+  $( "#container" ).tabs();
 });

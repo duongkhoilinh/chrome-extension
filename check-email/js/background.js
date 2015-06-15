@@ -46,10 +46,6 @@ $(document).ready(function() {
               chrome.tts.speak('You have a new email from' + iNameAuthor);
               // chrome.tts.speak('Please, click on notification to read it.', {'enqueue': true});
             }
-          } else if (result < currentFullCount) {
-            createNotications('','You still ' + result + ' unread emails');
-            if(onOffSpeak == 'on')
-              chrome.tts.speak('You still ' + result + ' unread emails');
           }
           currentFullCount = result;    
         }
